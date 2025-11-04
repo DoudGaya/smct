@@ -20,7 +20,7 @@ export default function ComingSoonPage() {
       <header className="flex items-center justify-between px-6 md:px-12 py-8">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded bg-accent"></div>
-          <span className="text-lg font-semibold tracking-tight">Enterprise</span>
+          <span className="text-lg font-semibold tracking-tight">Smart City Tech</span>
         </div>
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
@@ -39,9 +39,9 @@ export default function ComingSoonPage() {
         <div className="text-center mb-8 md:mb-12">
           <p className="text-accent font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">Launching Soon</p>
           <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-balance mb-6">
-            Professional Services Platform
+            Smart City Tech
           </h1>
-          <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto text-balance leading-relaxed">
+          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto text-balance leading-relaxed">
             Integrated solutions for property development, modern design, sustainable energy, advanced technology, and
             strategic commerce.
           </p>

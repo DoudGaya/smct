@@ -1,6 +1,7 @@
 "use client"
 
 import { useTheme } from "@/app/providers"
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
 
 export default function ThemeSwitcher() {
   const { theme, toggleTheme } = useTheme()
@@ -9,7 +10,7 @@ export default function ThemeSwitcher() {
     <button
       onClick={toggleTheme}
       className={`
-        relative inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300
+        relative inline-flex items-center gap-2 px-2 py-2 rounded-lg font-medium text-sm transition-all duration-300
         ${
           theme === "light"
             ? "bg-slate-200 text-slate-900 hover:bg-slate-300"
@@ -22,13 +23,11 @@ export default function ThemeSwitcher() {
     >
       {theme === "light" ? (
         <>
-          <span className="text-lg">☀️</span>
-          <span>Light</span>
+          <SunIcon />
         </>
       ) : (
         <>
-          <span className="text-lg">🌙</span>
-          <span>Dark</span>
+            <MoonIcon />
         </>
       )}
     </button>

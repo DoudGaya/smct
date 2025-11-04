@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Enterprise - Professional Services Platform",
-  description: "Launching soon - Professional services platform for property development, design, energy, technology and commerce",
+  title: "Smart City Technologies",
+  description: "SmartCityTEch | Launching soon - Professional services platform for property development, design, energy, technology and commerce",
 };
 
 export default function RootLayout({
