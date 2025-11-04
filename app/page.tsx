@@ -1,65 +1,74 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import { useEffect, useState } from "react"
+import CountdownTimer from "./components/countdown-timer"
+import EmailForm from "./components/email-form"
+import ThemeSwitcher from "./components/theme-switcher"
+
+export default function ComingSoonPage() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-background text-foreground overflow-hidden">
+      {/* Header */}
+      <header className="flex items-center justify-between px-6 md:px-12 py-8">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded bg-accent"></div>
+          <span className="text-lg font-semibold tracking-tight">Enterprise</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <ThemeSwitcher />
+          <a
+            href="mailto:contact@enterprise.com"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Contact
+          </a>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 py-12 md:py-0">
+        {/* Subtitle */}
+        <div className="text-center mb-8 md:mb-12">
+          <p className="text-accent font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">Launching Soon</p>
+          <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-balance mb-6">
+            Professional Services Platform
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto text-balance leading-relaxed">
+            Integrated solutions for property development, modern design, sustainable energy, advanced technology, and
+            strategic commerce.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Countdown */}
+        <div className="my-12 md:my-16">
+          <CountdownTimer targetDate={new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)} />
         </div>
-      </main>
-    </div>
-  );
+
+        {/* Email Form */}
+        <div className="w-full max-w-md">
+          <EmailForm />
+        </div>
+
+        {/* Divider */}
+        <div className="w-12 h-px bg-border mt-12 md:mt-16"></div>
+
+        {/* Footer Text */}
+        <p className="text-xs md:text-sm text-muted-foreground tracking-wide uppercase mt-8">
+          Be among the first to access our platform
+        </p>
+      </div>
+
+      {/* Decorative Elements */}
+      <div className="fixed top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      <div className="fixed bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    </main>
+  )
 }
