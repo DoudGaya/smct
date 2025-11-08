@@ -1,11 +1,21 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import CountdownTimer from "./components/countdown-timer"
-import EmailForm from "./components/email-form"
-import ThemeSwitcher from "./components/theme-switcher"
+import Link from "next/link"
+import Header from "./components/header"
+import Footer from "./components/footer"
+import HeroSection from "./components/hero-section"
+import FeatureCard from "./components/feature-card"
+import { 
+  HomeIcon, 
+  LightningBoltIcon, 
+  RowsIcon,
+  CheckCircledIcon,
+  ArrowRightIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons"
 
-export default function ComingSoonPage() {
+export default function Home() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -14,61 +24,134 @@ export default function ComingSoonPage() {
 
   if (!mounted) return null
 
+  const services = [
+    {
+      icon: <HomeIcon className="w-8 h-8" />,
+      title: "Property & Design",
+      description: "Full-spectrum property maintenance, land development, and expert interior/exterior design.",
+      href: "/services#property",
+    },
+    {
+      icon: <LightningBoltIcon className="w-8 h-8" />,
+      title: "Engineering & Tech",
+      description: "Electrical engineering, solar energy systems, CCTV surveillance, and IT solutions.",
+      href: "/services#engineering",
+      highlighted: true,
+    },
+    {
+      icon: <RowsIcon className="w-8 h-8" />,
+      title: "Sustainable Business",
+      description: "Mechanized farming, livestock breeding, and commercial commodity trading.",
+      href: "/services#agro",
+    },
+  ]
+
+  const benefits = [
+    {
+      icon: <CheckCircledIcon className="w-6 h-6" />,
+      title: "Integrated Approach",
+      description: "Seamless coordination across all service verticals",
+    },
+    {
+      icon: <CheckCircledIcon className="w-6 h-6" />,
+      title: "Professional Excellence",
+      description: "Industry-leading expertise and quality standards",
+    },
+    {
+      icon: <RocketIcon className="w-6 h-6" />,
+      title: "Innovation First",
+      description: "Cutting-edge solutions for modern challenges",
+    },
+    {
+      icon: <CheckCircledIcon className="w-6 h-6" />,
+      title: "Client-Centric",
+      description: "Your success is our ultimate priority",
+    },
+  ]
+
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-hidden">
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 md:px-12 py-8">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded bg-accent"></div>
-          <span className="text-lg font-semibold tracking-tight">Smart City Tech</span>
-        </div>
-        <div className="flex items-center gap-4">
-          <ThemeSwitcher />
-          <a
-            href="mailto:contact@enterprise.com"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Contact
-          </a>
-        </div>
-      </header>
+    <main className="min-h-screen bg-background">
+      {/* <Header /> */}
 
-      {/* Main Content */}
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 py-12 md:py-0">
-        {/* Subtitle */}
-        <div className="text-center mb-8 md:mb-12">
-          <p className="text-accent font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">Launching Soon</p>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-balance mb-6">
-            Smart City Tech
-          </h1>
-          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto text-balance leading-relaxed">
-            Integrated solutions for property development, modern design, sustainable energy, advanced technology, and
-            strategic commerce.
+      {/* Hero Section */}
+      <HeroSection
+        headline="Integrated Solutions for a Modern World"
+        subheadline="Your trusted partner in Property, Technology, Engineering, and Sustainable Enterprise."
+        description="We deliver comprehensive, professional services across multiple vital sectors—from property development to cutting-edge engineering, advanced ICT, and sustainable agro-allied ventures."
+        primaryCta={{ text: "Explore Our Services", href: "/services" }}
+        secondaryCta={{ text: "Learn More", href: "/about" }}
+        fullHeight={true}
+      />
+
+      {/* Services Section */}
+      <section className="py-12 md:py-20 bg-background">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-2xl mb-12">
+            <p className="text-accent font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">
+              Our Services
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
+              Comprehensive Solutions Across Multiple Sectors
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              We operate at the intersection of critical industries, ensuring efficiency and synergy across every project.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <FeatureCard key={index} {...service} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-12 md:py-20 bg-secondary/20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-2xl mb-12">
+            <p className="text-accent font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">
+              Why Choose Us
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold">
+              Built on Integrity and Excellence
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex gap-4">
+                <div className="text-accent shrink-0">{benefit.icon}</div>
+                <div>
+                  <h3 className="font-semibold mb-2">{benefit.title}</h3>
+                  <p className="text-muted-foreground text-sm">{benefit.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Banner Section */}
+      <section className="py-16 md:py-24 bg-accent">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-accent-foreground">
+            Ready to Partner With Us?
+          </h2>
+          <p className="text-lg text-accent-foreground/90 mb-10 max-w-2xl mx-auto">
+            Let's discuss your unique needs in Property Development, Engineering, ICT, or Sustainable Agriculture. Our team is prepared to offer tailored solutions.
           </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-accent-foreground text-accent font-semibold hover:shadow-lg transition-all hover:-translate-y-0.5"
+          >
+            Start Your Project
+            <ArrowRightIcon className="w-5 h-5" />
+          </Link>
         </div>
+      </section>
 
-        {/* Countdown */}
-        <div className="my-12 md:my-16">
-          <CountdownTimer targetDate={new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)} />
-        </div>
-
-        {/* Email Form */}
-        <div className="w-full max-w-md">
-          <EmailForm />
-        </div>
-
-        {/* Divider */}
-        <div className="w-12 h-px bg-border mt-12 md:mt-16"></div>
-
-        {/* Footer Text */}
-        <p className="text-xs md:text-sm text-muted-foreground tracking-wide uppercase mt-8">
-          Be among the first to access our platform
-        </p>
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="fixed top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-      <div className="fixed bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      <Footer />
     </main>
   )
 }

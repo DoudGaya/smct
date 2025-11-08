@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "./providers";
+// import LayoutClient from "./layout-client";
+import LayoutClient from "./layout-client";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,9 +31,23 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          {children}
+          <LayoutClient>{children}</LayoutClient>
         </ThemeProvider>
       </body>
     </html>
+  );
+}
+
+function RootLayoutContent({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const Sidebar = require("./components/sidebar").default;
+  return (
+    <>
+      <Sidebar />
+      {children}
+    </>
   );
 }
