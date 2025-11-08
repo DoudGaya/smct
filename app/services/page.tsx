@@ -5,6 +5,12 @@ import Link from "next/link"
 import Header from "@/app/components/header"
 import Footer from "@/app/components/footer"
 import HeroSection from "@/app/components/hero-section"
+import agri from '@/app/assets/images/agri.jpg'
+import estate from '@/app/assets/images/realestate1.jpg'
+import solar from '@/app/assets/images/solar.jpg'
+import interior from '@/app/assets/images/realestate/estate-3.png'
+import tech from '@/app/assets/images/tech-suppport.jpg'
+import cctv from '@/app/assets/images/cctv-security-camera.jpg'
 import {
   HomeIcon,
   LightningBoltIcon,
@@ -14,6 +20,7 @@ import {
   CheckCircledIcon,
   ArrowRightIcon,
 } from "@radix-ui/react-icons"
+import Image from "next/image"
 
 export default function ServicesPage() {
   const [mounted, setMounted] = useState(false)
@@ -29,6 +36,7 @@ export default function ServicesPage() {
       id: "property",
       icon: <HomeIcon className="w-8 h-8" />,
       title: "Real Estate & Property Management",
+      image: estate,
       subtitle: "Comprehensive property solutions",
       description:
         "We offer comprehensive services across all ramifications of the property sector, including professional maintenance, land development, complete sales and purchase services, and expert estate management.",
@@ -45,6 +53,7 @@ export default function ServicesPage() {
       id: "design",
       icon: <RocketIcon className="w-8 h-8" />,
       title: "Interior & Exterior Design & Furnishing",
+      image: interior,
       subtitle: "Transform spaces with expert design",
       description:
         "Our team specializes in transforming spaces through expert interior and exterior decoration. We handle complete decorating and rehabilitation of any premises including shops, hotels, banks, and offices.",
@@ -61,6 +70,7 @@ export default function ServicesPage() {
       id: "engineering",
       icon: <LightningBoltIcon className="w-8 h-8" />,
       title: "Engineering, Energy & Security Solutions",
+      image: solar,
       subtitle: "Critical infrastructure & safety systems",
       description:
         "We provide critical infrastructure solutions through our engineering division, focusing on electrical engineering and installation of solar energy systems, professional street lighting, and trusted electronic security services.",
@@ -76,6 +86,7 @@ export default function ServicesPage() {
     {
       id: "ict",
       icon: <UpdateIcon className="w-8 h-8" />,
+      image: tech,
       title: "Telecommunications & ICT Services",
       subtitle: "Digital transformation solutions",
       description:
@@ -94,6 +105,7 @@ export default function ServicesPage() {
       icon: <CheckCircledIcon className="w-8 h-8" />,
       title: "Commercial Agency & Sales",
       subtitle: "Business facilitation & trading",
+      image: cctv,
       description:
         "As a reliable property agent and business facilitator, we carry on the business of sale and purchase of machineries, commodities, and serve as agents for buying, selling, letting, or hiring assets.",
       features: [
@@ -109,6 +121,7 @@ export default function ServicesPage() {
       id: "agro",
       icon: <RowsIcon className="w-8 h-8" />,
       title: "Agro-Allied Services",
+      image: agri,
       subtitle: "Sustainable agriculture & food security",
       description:
         "Committed to food security and sustainable development, we are involved in mechanized farming, poultry farming, and livestock breeding with expertise in processing and marketing agricultural produce.",
@@ -130,7 +143,7 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <HeroSection
         headline="Comprehensive Professional Services"
-        subheadline="From property to technology to sustainability—we deliver integrated solutions across vital sectors."
+        subheadline="From property to technology to sustainability we deliver integrated solutions across vital sectors."
         fullHeight={false}
       />
 
@@ -142,7 +155,7 @@ export default function ServicesPage() {
               <Link
                 key={service.id}
                 href={`#${service.id}`}
-                className="group p-6 rounded-lg bg-secondary/40 border border-border hover:border-accent hover:bg-secondary/60 transition-all"
+                className="group p-6 bg-secondary/40 border-y border-border hover:border-accent hover:bg-secondary/60 transition-all"
               >
                 <div className="flex items-start gap-4">
                   <div className="text-accent group-hover:scale-110 transition-transform">
@@ -217,12 +230,7 @@ export default function ServicesPage() {
 
                 {/* Visual Placeholder */}
                 <div className="min-h-80 bg-linear-to-br from-accent/10 to-accent/5 rounded-xl border border-border/40 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 rounded-lg bg-accent/20 flex items-center justify-center mx-auto mb-4 text-accent">
-                      {service.icon}
-                    </div>
-                    <p className="text-muted-foreground text-sm">Service visualization</p>
-                  </div>
+                 <Image src={service.image} alt={service.title} className="rounded-xl object-cover w-full h-80" />
                 </div>
               </div>
             </div>

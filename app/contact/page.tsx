@@ -133,11 +133,8 @@ export default function ContactPage() {
               </div>
 
               {/* Map Embed Placeholder */}
-              <div className="w-full h-80 bg-linear-to-br from-accent/10 to-accent/5 rounded-xl border border-border/40 flex items-center justify-center">
-                <div className="text-center">
-                  <DimensionsIcon className="w-12 h-12 text-accent/40 mx-auto mb-3" />
-                  <p className="text-muted-foreground text-sm">Map embed location</p>
-                </div>
+              <div className="w-full overflow-hidden h-80 bg-linear-to-br from-accent/10 to-accent/5 rounded-xl border border-border/40 flex items-center justify-center">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22173.089173601813!2d7.454791556311474!3d9.056864444335131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sng!4v1762638388874!5m2!1sen!2sng" width="600" height="450"  loading="lazy" ></iframe>
               </div>
 
               {/* Social Links */}

@@ -11,6 +11,13 @@ interface HeaderProps {
   theme?: "light" | "dark"
 }
 
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/contact", label: "Contact" },
+  ]
+
 export default function Header({ onToggleSidebar, theme = "light" }: HeaderProps) {
 
   return (
@@ -24,10 +31,9 @@ export default function Header({ onToggleSidebar, theme = "light" }: HeaderProps
             width={50} 
             height={50} 
           />
-          <span className="hidden sm:inline font-semibold text-lg tracking-tight">SmartCity</span>
+          <span className="hidden sm:inline font-semibold text-lg tracking-tight">SMART CITY TECH</span>
         </Link>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={onToggleSidebar}
           className="md:hidden p-2 rounded-lg hover:bg-secondary/50 transition-colors"
@@ -38,6 +44,18 @@ export default function Header({ onToggleSidebar, theme = "light" }: HeaderProps
 
         {/* Spacer */}
         <div className="flex-1 hidden md:flex" />
+
+        {
+          navLinks.map((link) => (
+            <Link
+              key={link.href} 
+              href={link.href}
+              className="hidden md:inline-block px-4 py-2 rounded-lg text-foreground/80 hover:bg-accent/10 hover:text-accent transition-all font-medium"
+            >
+              {link.label}
+            </Link>
+          ))
+        }
 
         {/* Right Section - Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">

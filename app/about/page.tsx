@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react"
 import Header from "@/app/components/header"
+import about1 from '@/app/assets/images/realestate/estate-5.png'
+import about2 from '@/app/assets/images/tech-suppport.jpg'
+import about3 from '@/app/assets/images/cctv-security-camera.jpg'
+import about4 from '@/app/assets/images/realestate1.jpg'
 import Footer from "@/app/components/footer"
 import HeroSection from "@/app/components/hero-section"
 import { 
@@ -10,6 +14,7 @@ import {
   RocketIcon,
   TargetIcon,
 } from "@radix-ui/react-icons"
+import Image from "next/image"
 
 export default function AboutPage() {
   const [mounted, setMounted] = useState(false)
@@ -46,6 +51,7 @@ export default function AboutPage() {
   const sectors = [
     {
       number: "1",
+      image: about4,
       title: "Real Estate & Infrastructure",
       description: "Development, sales, management, and professional property decoration services.",
       points: [
@@ -57,6 +63,7 @@ export default function AboutPage() {
     },
     {
       number: "2",
+      image: about3,
       title: "Engineering & Security",
       description: "Critical infrastructure solutions and electronic security systems.",
       points: [
@@ -68,6 +75,7 @@ export default function AboutPage() {
     },
     {
       number: "3",
+      image: about2,
       title: "Information Technology",
       description: "Digital transformation and comprehensive ICT services.",
       points: [
@@ -79,6 +87,7 @@ export default function AboutPage() {
     },
     {
       number: "4",
+      image: about3,
       title: "Sustainable Ventures",
       description: "Agricultural innovation and commodity trading.",
       points: [
@@ -105,7 +114,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {/* Mission */}
-            <div className="p-8 rounded-xl bg-secondary/40 border border-border">
+            <div className="p-8 bg-secondary/40 border-border border-y-2">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
                   <TargetIcon className="w-6 h-6 text-accent" />
@@ -118,7 +127,7 @@ export default function AboutPage() {
             </div>
 
             {/* Vision */}
-            <div className="p-8 rounded-xl bg-secondary/40 border border-border">
+            <div className="p-8  bg-secondary/40 border-y border-border">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
                   <RocketIcon className="w-6 h-6 text-accent" />
@@ -147,7 +156,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="p-6 rounded-lg bg-background border border-border/40">
+              <div key={index} className="p-6 bg-background border-y border-accent/40">
                 <div className="flex items-start gap-4">
                   <div className="text-accent shrink-0">{value.icon}</div>
                   <div>
@@ -178,7 +187,7 @@ export default function AboutPage() {
               <div
                 key={index}
                 className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${
-                  index % 2 === 1 ? "md:grid-cols-2 md:[direction:rtl]" : ""
+                  index % 2 === 1 ? "md:grid-cols-2 bg-gray-200  dark:bg-gray-900/50 border-accent/30 border-y-2 py-6 px-4 md:[direction:rtl]" : ""
                 }`}
               >
                 {/* Content */}
@@ -203,11 +212,8 @@ export default function AboutPage() {
                 </div>
 
                 {/* Visual Placeholder */}
-                <div className="min-h-80 bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl border border-border/40 flex items-center justify-center">
-                  <div className="text-center">
-                    <LightningBoltIcon className="w-16 h-16 text-accent/40 mx-auto mb-4" />
-                    <p className="text-muted-foreground text-sm">Visual content placeholder</p>
-                  </div>
+                <div className="min-h-80 relative">
+                  <Image src={sector.image} alt={sector.title} layout="fill" objectFit="cover" className="rounded-lg" />
                 </div>
               </div>
             ))}
