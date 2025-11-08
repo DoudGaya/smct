@@ -43,8 +43,19 @@ export default function ContactPage() {
     setStatus("loading")
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 800))
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || "Failed to send message")
+      }
+
       setStatus("success")
       setFormData({
         name: "",
@@ -56,6 +67,7 @@ export default function ContactPage() {
       })
       setTimeout(() => setStatus("idle"), 3000)
     } catch (error) {
+      console.error("Form submission error:", error)
       setStatus("error")
       setTimeout(() => setStatus("idle"), 3000)
     }
@@ -67,20 +79,20 @@ export default function ContactPage() {
     {
       icon: <DimensionsIcon className="w-6 h-6" />,
       label: "Address",
-      value: "[Your Location]",
+      value: "No. 8, Lome Crescent, Wuse Zone 7, AMAC, Abuja, Nigeria",
       href: "#",
     },
     {
       icon: <MobileIcon className="w-6 h-6" />,
       label: "Phone",
-      value: "[Your Phone Number]",
-      href: "tel:[phone]",
+      value: "+234 806 378 4713",
+      href: "tel:+2348063784713",
     },
     {
       icon: <EnvelopeOpenIcon className="w-6 h-6" />,
       label: "Email",
-      value: "[Your Email]",
-      href: "mailto:[email]",
+      value: "info@smartcitytech.ng",
+      href: "mailto:info@smartcitytech.ng",
     },
   ]
 

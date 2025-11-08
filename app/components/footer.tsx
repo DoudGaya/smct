@@ -3,6 +3,9 @@
 import Link from "next/link"
 import { LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons"
 import ThemeSwitcher from "./theme-switcher"
+import logo from '@/public/logo.png'
+import logoDark from '@/public/logo-dark.png'
+import Image from "next/image"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -21,15 +24,15 @@ export default function Footer() {
   }
                                                                               
   return (
-    <footer className="border-t bg-gray-100 dark:bg-black border-border/40 py-12 md:py-16">
+    <footer className="border-t bg-gray-300 dark:bg-black border-border/40 py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-6">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Section */}
           <div className="col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded bg-accent/20 border border-accent"></div>
-              <span className="font-semibold tracking-tight">SmartCity</span>
+              <Image src={logo} alt="SmartCity Logo" className=" dark:hidden block object-contain object-left h-8" />
+              <Image src={logoDark} alt="SmartCity Logo" className=" hidden dark:block object-contain object-left h-8" />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Integrated solutions for property, technology, engineering, and sustainable enterprise.
@@ -107,7 +110,7 @@ export default function Footer() {
             &copy; {currentYear} SmartCity Tech. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground">
-            Designed with precision. Built with integrity.
+            Designed with precision. Built with integrity by <a href="http://doudgaya.xyz" className="font-bold hover:underline" target="_blank" rel="noopener noreferrer">DoudGaya</a>
           </p>
         </div>
       </div>

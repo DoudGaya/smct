@@ -41,14 +41,14 @@ return (
       }}
       className={`relative w-full ${
         fullHeight ? "min-h-screen flex backdrop-blur-md items-center bg-cover bg-center" : "min-h-[60vh] flex items-center"
-      } overflow-hidden bg-no-repeat bg-cover bg-black/50 bg-blend-overlay `}
+      } overflow-hidden bg-no-repeat bg-cover bg-stone-950/50 dark:bg-black/50 bg-blend-overlay `}
     >
 
       {/* Decorative background elements */}     
       <div className="mx-auto max-w-7xl text-white px-6 w-full">
         <div className="max-w-3xl">
           {/* Label */}
-          <p className="text-accent font-semibold tracking-widest uppercase text-xs md:text-sm mb-6 inline-block">
+          <p className="text-accent backdrop-blur-2xl bg-white/40 transform rotate-3 font-bold px-4 py-3 tracking-widest uppercase text-xs md:text-sm mb-6 inline-block">
             Welcome to Smart City Tech
           </p>
 
@@ -81,8 +81,9 @@ return (
             {secondaryCta && (
               <Link
                 href={secondaryCta.href}
-                className="px-8 py-3 rounded-lg border-2 border-accent text-accent font-semibold hover:bg-accent/10 transition-all inline-block text-center"
+                className="px-8 py-3 rounded-lg text-white border-2 border-white font-semibold hover:bg-accent/10 transition-all inline-block text-center"
               >
+
                 {secondaryCta.text}
               </Link>
             )}
