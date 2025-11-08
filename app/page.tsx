@@ -198,7 +198,7 @@ export default function Home() {
                 <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
-
+            
             {/* Visual Placeholder */}
             <div className="min-h-[400px] my-20 grid gap-2.5 grid-cols-3">
              {
