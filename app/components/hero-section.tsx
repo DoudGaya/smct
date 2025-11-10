@@ -48,7 +48,7 @@ return (
       <div className="mx-auto max-w-7xl text-white px-6 w-full">
         <div className="max-w-3xl">
           {/* Label */}
-          <p className="text-accent backdrop-blur-2xl bg-white/40 transform rotate-3 font-bold px-4 py-3 tracking-widest uppercase text-xs md:text-sm mb-6 inline-block">
+          <p className="text-accent backdrop-blur-2xl bg-white/40 font-bold px-4 py-3 tracking-widest uppercase text-xs md:text-sm mb-6 inline-block">
             Welcome to Smart City Tech
           </p>
 
